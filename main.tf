@@ -27,7 +27,7 @@ resource "datadog_monitor" "check_5m_load_average" {
   type    = "metric alert"
   message = "Load Average Alert on {{host.name}}. Notify: ${var.primary_notifier}"
 
-  query = "avg(last_5m):avg:system.load.5{*}"
+  query = "avg(last_5m):avg:system.load.5{*} > 1"
 
   thresholds {
     critical          = 1
